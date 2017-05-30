@@ -44,6 +44,16 @@ var removeNote = (title) => {
   return notes.length !== filteredNotes.length;
 };
 
+var resetNote = () => {
+  var filePath = './notes-data.json';
+  fs.stat(filePath, function (err, stats) {
+    fs.unlink(filePath, function (err) {
+        if(err) return console.log('App does not need reseting.');
+        console.log('App reseted successfully.');
+    });
+  });
+};
+
 var logNote = (note) => {
   console.log('--');
   console.log(`Title: ${note.title}`);
@@ -55,5 +65,6 @@ module.exports = {
   getAll,
   getNote,
   removeNote,
-  logNote
+  logNote,
+  resetNote
 };

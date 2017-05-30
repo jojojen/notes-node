@@ -24,6 +24,7 @@ const argv = yargs
   .command('remove', 'Remove a note', {
     title: titleOptions
   })
+  .command('reset', 'Reset this app')
   .help()
   .argv;
 
@@ -58,6 +59,9 @@ switch(command) {
     var noteRemoved = notes.removeNote(argv.title);
     var message = noteRemoved ? 'Note was removed' : 'Note not found';
     console.log(message);
+    break;
+  case 'reset':
+    notes.resetNote();
     break;
   default:
     console.log('Command not recognized');
